@@ -21,21 +21,27 @@ window.addEventListener('load', async () => {
   }, 5000);
 
   startBtn.addEventListener('click', () => {
-    mediaRecorder.start();
-    settings.recording = true;
-    startBtn.textContent = 'Recording';
+    if (mediaRecorder !== undefined) {
+      mediaRecorder.start();
+      settings.recording = true;
+      startBtn.textContent = 'Recording';
 
-    startTimer();
-    recording.style.animationName = 'recording';
+      startTimer();
+      recording.style.animationName = 'recording';
+    }
   });
 
   stopBtn.addEventListener('click', () => {
-    mediaRecorder.stop();
-    settings.recording = false;
-    startBtn.textContent = 'Start recording';
+    if (mediaRecorder !== undefined) {
+      if (mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+        settings.recording = false;
+        startBtn.textContent = 'Start recording';
 
-    pauseTimer();
-    recording.style.animationName = '';
+        pauseTimer();
+        recording.style.animationName = '';
+      }
+    }
   });
 
   // Get the available video sources

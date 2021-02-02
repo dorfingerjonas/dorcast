@@ -121,6 +121,19 @@ window.addEventListener('load', async () => {
     }
 
     resetTimer();
-    printSources(await getVideoSources());
+  }
+
+  // compare arrays if they match in any order
+  function equalsInAnyOrder(a, b) {
+    if (a === undefined || b === undefined) 
+      return false;
+
+    if (a.length !== b.length)
+      return false;
+
+    a = a.sort((s1, s2) => s1.id > s2.id);
+    b = b.sort((s1, s2) => s1.id > s2.id);
+
+    return JSON.stringify(a) === JSON.stringify(b);
   }
 });

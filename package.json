@@ -1,7 +1,7 @@
 {
   "name": "dorcast",
   "version": "1.0.0",
-  "description": "open source screen cast software",
+  "description": "🖥 open-source screencast software",
   "main": "index.js",
   "scripts": {
     "start": "electron .",

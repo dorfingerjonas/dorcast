@@ -5,6 +5,7 @@ window.addEventListener('load', async () => {
 
   let mediaRecorder;
   const recordedChunks = [];
+  const settings = {};
 
   const videoElement = document.querySelector('video');
   const stopBtn = document.getElementById('stopBtn');
@@ -53,17 +54,18 @@ window.addEventListener('load', async () => {
 
       element.addEventListener('click', () => {
         selectSource(source);
-
+        
         document.querySelectorAll('.screen, .window').forEach(v => v.classList.remove('activeSource'));
-
+        
+        settings.sourceId = source.id;
         element.classList.add('activeSource');
       });
 
       if (source.id.includes('screen')) {
-        element.classList.add('screen');
+        element.className = settings.sourceId === source.id ? 'screen activeSource' : 'screen';
         screenWrapper.appendChild(element);
       } else {
-        element.classList.add('window');
+        element.className = settings.sourceId === source.id ? 'window activeSource' : 'window';
         windowWrapper.appendChild(element);
       }
     }
@@ -82,8 +84,7 @@ window.addEventListener('load', async () => {
     };
 
     // Create a Stream
-    const stream = await navigator.mediaDevices
-      .getUserMedia(constraints);
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
 
     // Preview the source in a video element
     videoElement.srcObject = stream;
@@ -120,5 +121,6 @@ window.addEventListener('load', async () => {
     }
 
     resetTimer();
+    printSources(await getVideoSources());
   }
 });

@@ -1,0 +1,27 @@
+#splashScreen {
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: opacity 1s ease-in-out;
+}
+
+#splashScreenText {
+    transform: scale(.6);
+    opacity: 0;
+    font-size: 2.5vw;
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out;
+}
+
+#splashScreen .showText {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hideSplashScreen {
+    opacity: 0;
+}

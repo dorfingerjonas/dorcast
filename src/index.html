@@ -12,6 +12,7 @@
     <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
     <script src='splashScreen.js'></script>
     <script src='render.js'></script>
+    <script src="timer.js"></script>
 </head>
 <body>
     <div id='splashScreen' class='splashScreen'>
@@ -21,21 +22,28 @@
     <main id='main' class='hide main'>
         <div class='videoWrapper'>
             <video id='preview'></video>
+            
+            <div id="timerWrapper">
+                <span id="recording"></span>
+                <span id="timer">00:00:00</span>
+            </div>
         </div>
 
         <div id='settings'>
             <div id='buttonWrapper'>
-                <button id='startBtn' class='button'>Start</button>
-                <button id='stopBtn' class='button'>Stop</button>
+                <button id='startBtn' class='button'>Start recording</button>
+                <button id='stopBtn' class='button'>Stop recording</button>
             </div>
 
             <div id='sourceSelection'>
-                <div id='screenWrapper'>
+                <div>
                     <span>Screens</span>
+                    <div id='screenWrapper'></div>
                 </div>
-
-                <div id='windowWrapper'>
+                
+                <div>
                     <span>Windows</span>
+                    <div id='windowWrapper'></div>
                 </div>
             </div>
         </div>

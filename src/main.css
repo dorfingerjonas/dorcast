@@ -1,0 +1,19 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+    background: var(--bg);
+    font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    width: 5px;
+    background: lightgray;
+    border-radius: 7px;
+}
+
+.hide {
+    display: none !important;
+}

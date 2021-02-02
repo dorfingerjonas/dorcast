@@ -5,17 +5,24 @@ window.addEventListener('load', async () => {
 
   let mediaRecorder;
   const recordedChunks = [];
-  const settings = {};
+  const settings = {
+    recording: false
+  };
 
   const videoElement = document.querySelector('video');
   const stopBtn = document.getElementById('stopBtn');
   const startBtn = document.getElementById('startBtn');
   const recording = document.getElementById('recording');
 
-  printSources(await getVideoSources());
+  setInterval(async () => {
+    if (!settings.recording) {
+      printSources(await getVideoSources());
+    }
+  }, 5000);
 
   startBtn.addEventListener('click', () => {
     mediaRecorder.start();
+    settings.recording = true;
     startBtn.textContent = 'Recording';
 
     startTimer();
@@ -24,6 +31,7 @@ window.addEventListener('load', async () => {
 
   stopBtn.addEventListener('click', () => {
     mediaRecorder.stop();
+    settings.recording = false;
     startBtn.textContent = 'Start recording';
 
     pauseTimer();
@@ -43,32 +51,36 @@ window.addEventListener('load', async () => {
     const windowWrapper = document.getElementById('windowWrapper');
     const screenWrapper = document.getElementById('screenWrapper');
 
-    windowWrapper.innerHTML = '';
-    screenWrapper.innerHTML = '';
+    if (!equalsInAnyOrder(sources, settings.previousSources)) {
+      windowWrapper.innerHTML = '';
+      screenWrapper.innerHTML = '';
 
-    for (const source of sources) {
-      const element = document.createElement('div');
-
-      element.style.backgroundImage = `url(${source.thumbnail.toDataURL()})`;
-      element.title = source.name;
-
-      element.addEventListener('click', () => {
-        selectSource(source);
-        
-        document.querySelectorAll('.screen, .window').forEach(v => v.classList.remove('activeSource'));
-        
-        settings.sourceId = source.id;
-        element.classList.add('activeSource');
-      });
-
-      if (source.id.includes('screen')) {
-        element.className = settings.sourceId === source.id ? 'screen activeSource' : 'screen';
-        screenWrapper.appendChild(element);
-      } else {
-        element.className = settings.sourceId === source.id ? 'window activeSource' : 'window';
-        windowWrapper.appendChild(element);
+      for (const source of sources) {
+        const element = document.createElement('div');
+  
+        element.style.backgroundImage = `url(${source.thumbnail.toDataURL()})`;
+        element.title = source.name;
+  
+        element.addEventListener('click', () => {
+          selectSource(source);
+          
+          document.querySelectorAll('.screen, .window').forEach(v => v.classList.remove('activeSource'));
+          
+          settings.sourceId = source.id;
+          element.classList.add('activeSource');
+        });
+  
+        if (source.id.includes('screen')) {
+          element.className = settings.sourceId === source.id ? 'screen activeSource' : 'screen';
+          screenWrapper.appendChild(element);
+        } else {
+          element.className = settings.sourceId === source.id ? 'window activeSource' : 'window';
+          windowWrapper.appendChild(element);
+        }
       }
     }
+
+    settings.previousSources = sources;
   }
 
   // Change the videoSource window to record

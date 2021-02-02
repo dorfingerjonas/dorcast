@@ -1,0 +1,27 @@
+{
+  "name": "dorcast",
+  "version": "1.0.0",
+  "description": "open source screen cast software",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dorfingerjonas/dorcast.git"
+  },
+  "author": "Jonas Dorfinger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dorfingerjonas/dorcast/issues"
+  },
+  "homepage": "https://github.com/dorfingerjonas/dorcast#readme",
+  "devDependencies": {
+    "electron": "^11.2.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "get-port": "^5.1.1"
+  }
+}

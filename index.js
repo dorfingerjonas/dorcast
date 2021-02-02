@@ -28,8 +28,8 @@ const settings = {};
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        width: 1160,
-        height: 740,
+        width: 1560,
+        height: 1140,
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,

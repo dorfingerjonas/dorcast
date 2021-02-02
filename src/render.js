@@ -9,17 +9,24 @@ window.addEventListener('load', async () => {
   const videoElement = document.querySelector('video');
   const stopBtn = document.getElementById('stopBtn');
   const startBtn = document.getElementById('startBtn');
+  const recording = document.getElementById('recording');
 
   printSources(await getVideoSources());
 
   startBtn.addEventListener('click', () => {
     mediaRecorder.start();
     startBtn.textContent = 'Recording';
+
+    startTimer();
+    recording.style.animationName = 'recording';
   });
 
   stopBtn.addEventListener('click', () => {
     mediaRecorder.stop();
-    startBtn.textContent = 'Start';
+    startBtn.textContent = 'Start recording';
+
+    pauseTimer();
+    recording.style.animationName = '';
   });
 
   // Get the available video sources
@@ -43,6 +50,10 @@ window.addEventListener('load', async () => {
 
       element.addEventListener('click', () => {
         selectSource(source);
+
+        document.querySelectorAll('.screen, .window').forEach(v => v.classList.remove('activeSource'));
+
+        element.classList.add('activeSource');
       });
 
       if (source.id.includes('screen')) {
@@ -98,11 +109,13 @@ window.addEventListener('load', async () => {
 
     const { filePath } = await dialog.showSaveDialog({
       buttonLabel: 'Save video',
-      defaultPath: `dorcast-${Date.now()}.mp4`
+      defaultPath: `DorCast-${Date.now()}.mp4`
     });
 
     if (filePath) {
       writeFile(filePath, buffer, () => console.log('video saved successfully!'));
     }
+
+    resetTimer();
   }
 });

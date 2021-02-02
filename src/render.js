@@ -42,6 +42,9 @@ window.addEventListener('load', async () => {
     const windowWrapper = document.getElementById('windowWrapper');
     const screenWrapper = document.getElementById('screenWrapper');
 
+    windowWrapper.innerHTML = '';
+    screenWrapper.innerHTML = '';
+
     for (const source of sources) {
       const element = document.createElement('div');
 

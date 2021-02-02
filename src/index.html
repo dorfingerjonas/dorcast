@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>DorCast</title>
+    <link rel='stylesheet' href='main.css'>
+    <link rel='stylesheet' href='variables.css'>
+    <link rel='stylesheet' href='splashscreen.css'>
+    <link rel='stylesheet' href='mainScreen.css'>
+    <link rel='preconnect' href='https://fonts.gstatic.com'>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
+    <script src='splashScreen.js'></script>
+    <script src='render.js'></script>
+</head>
+<body>
+    <div id='splashScreen' class='splashScreen'>
+        <h1 id='splashScreenText'>DorCast - Screen Capturing</h1>
+    </div>
+
+    <main id='main' class='hide main'>
+        <div class='videoWrapper'>
+            <video id='preview'></video>
+        </div>
+
+        <div id='settings'>
+            <div id='buttonWrapper'>
+                <button id='startBtn' class='button'>Start</button>
+                <button id='stopBtn' class='button'>Stop</button>
+            </div>
+
+            <div id='sourceSelection'>
+                <div id='screenWrapper'>
+                    <span>Screens</span>
+                </div>
+
+                <div id='windowWrapper'>
+                    <span>Windows</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

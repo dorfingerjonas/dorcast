@@ -26,6 +26,13 @@ const settings = {};
     });
 })();
 
+expressApp.use(express.static(__dirname + '/src'));
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin')
+        app.quit()
+});
+
 function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1560,
@@ -41,10 +48,3 @@ function createWindow() {
     mainWindow.webContents.openDevTools();
     mainWindow.focus();
 }
-
-expressApp.use(express.static(__dirname + '/src'));
-
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin')
-        app.quit()
-});

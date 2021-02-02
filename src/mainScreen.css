@@ -1,0 +1,92 @@
+.main {
+    width: 100%;
+    height: 100%;
+}
+
+.videoWrapper {
+    width: 70%;
+    height: 70%;
+    padding: 0 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+}
+
+#preview {
+    height: 90%;
+    background: #000;
+}
+
+#settings {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+#settings button {
+    margin: 0 1em;
+    padding: 10px 25px;
+    color: var(--font-color);
+    font-size: 1em;
+    border: 2px solid transparent;
+    border-radius: 7px;
+    outline: none;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+}
+
+#startBtn {
+    background: var(--startBtn);
+}
+
+#stopBtn  {
+    background: var(--stopBtn);
+}
+
+#startBtn:hover {
+    background: transparent;
+    border-color: var(--startBtn);
+    color: var(--startBtn);
+}
+
+#stopBtn:hover  {
+    background: transparent;
+    border-color: var(--stopBtn);
+    color: var(--stopBtn);
+}
+
+/* Source Selection */
+#sourceSelection {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sourceSelection > div {
+    width: 40%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--font-color);
+    overflow-y: scroll;
+}
+
+#sourceSelection > div span {
+    width: 100%;
+}
+
+.window, .screen {
+    width: 40%;
+    height: 0;
+    margin: 1%;
+    padding-top: 22.5%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

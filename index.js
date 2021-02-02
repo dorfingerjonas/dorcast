@@ -35,8 +35,8 @@ app.on('window-all-closed', () => {
 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        width: 1560,
-        height: 1140,
+        width: 1720,
+        height: 880,
         autoHideMenuBar: true,
         webPreferences: {
             nodeIntegration: true,

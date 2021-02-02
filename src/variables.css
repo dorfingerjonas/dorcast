@@ -1,0 +1,14 @@
+:root {
+    --bg: #333842;
+    --font-color: #fff;
+}
+
+.splashScreen {
+    --bg: #485b6e;
+}
+
+.main {
+    --bg: #353535;
+    --startBtn: #03a87c;
+    --stopBtn: #c02942;
+}

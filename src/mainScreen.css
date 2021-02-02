@@ -7,15 +7,41 @@
     width: 70%;
     height: 70%;
     padding: 0 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background: var(--bg);
+    color: var(--font-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
 }
 
 #preview {
     height: 90%;
     background: #000;
+}
+
+.videoWrapper #timerWrapper {
+    height: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoWrapper #timerWrapper #recording {
+    width: 1em;
+    height: 1em;
+    background: var(--recording);
+    border-radius: 50%;
+    margin-right: .5em;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes recording {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 #settings {
@@ -36,6 +62,7 @@
     border-radius: 7px;
     outline: none;
     cursor: pointer;
+    user-select: none;
     transition: all 300ms ease-in-out;
 }
 
@@ -69,16 +96,23 @@
 }
 
 #sourceSelection > div {
-    width: 40%;
+    height: 90%;
+    width: 48%;
+    color: var(--font-color);
+}
+
+#sourceSelection > div > div {
+    width: 100%;
     height: 80%;
+    margin: .5em;
     display: flex;
     flex-wrap: wrap;
-    color: var(--font-color);
     overflow-y: scroll;
 }
 
 #sourceSelection > div span {
     width: 100%;
+    margin-bottom: .5em;
 }
 
 .window, .screen {
@@ -86,7 +120,19 @@
     height: 0;
     margin: 1%;
     padding-top: 22.5%;
+    border: 2px solid transparent;
+    border-radius: 5px;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    cursor: pointer;
+    transition: border-color 300ms ease-in-out;
+}
+
+.window:hover, .screen:hover {
+    border-color: var(--startBtn);
+}
+
+.activeSource {
+    border-color: var(--stopBtn);
 }

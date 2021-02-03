@@ -74,16 +74,21 @@
     background: var(--stopBtn);
 }
 
-#startBtn:hover {
+#startBtn:hover:not(.disable) {
     background: transparent;
     border-color: var(--startBtn);
     color: var(--startBtn);
 }
 
-#stopBtn:hover  {
+#stopBtn:hover:not(.disable)  {
     background: transparent;
     border-color: var(--stopBtn);
     color: var(--stopBtn);
+}
+
+.disable {
+    cursor: not-allowed !important;
+    opacity: .5;
 }
 
 /* Source Selection */

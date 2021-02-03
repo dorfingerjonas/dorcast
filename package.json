@@ -1,6 +1,6 @@
 {
   "name": "dorcast",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "🖥 open-source screencast software",
   "main": "index.js",
   "scripts": {

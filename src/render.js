@@ -26,6 +26,9 @@ window.addEventListener('load', async () => {
       settings.recording = true;
       startBtn.textContent = 'Recording';
 
+      startBtn.classList.add('disable');
+      stopBtn.classList.remove('disable');
+
       startTimer();
       recording.style.animationName = 'recording';
     }
@@ -37,6 +40,9 @@ window.addEventListener('load', async () => {
         mediaRecorder.stop();
         settings.recording = false;
         startBtn.textContent = 'Start recording';
+
+        stopBtn.classList.add('disable');
+        startBtn.classList.remove('disable');
 
         pauseTimer();
         recording.style.animationName = '';
@@ -74,6 +80,7 @@ window.addEventListener('load', async () => {
           
           settings.sourceId = source.id;
           element.classList.add('activeSource');
+          startBtn.classList.remove('disable');
         });
   
         if (source.id.includes('screen')) {

@@ -15,7 +15,7 @@ $ npm start
 ## Build
 
 ```shell
-# start project in dev mode
+# build .exe file
 $ npm run build
 ```
 
